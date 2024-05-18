@@ -1,0 +1,90 @@
+<scene id="scene">
+  <camera type="perspective">
+    <integer name="width" value="1920"/>
+    <integer name="height" value="1080"/>
+    <float name="fov" value="39.6"/>
+    <string name="fovAxis" value="x"/>
+    <transform>
+      <matrix value="0.799,0.254,-0.545,7.36,  0.602,-0.338,0.724,-6.93,  5.04e-08,-0.906,-0.423,4.96,  0,0,0,1"/>
+    </transform>
+  </camera>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="constant" value="0.8,0.138,0.0485"/>
+      <texture name="roughness" type="constant" value="0.5"/>
+      <texture name="metallic" type="constant" value="0.725"/>
+      <texture name="specular" type="constant" value="0.5"/>
+    </bsdf>
+    <shape type="mesh" filename="meshes/Cube.ply"/>
+    <transform>
+      <matrix value="1,0,0,0,  0,1,0,0,  0,0,1,0,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <shape type="sphere"/>
+    <transform>
+      <scale value="0.1"/>
+      <translate x="4.08" y="1.01" z="5.9"/>
+    </transform>
+    <emission type="lambertian">
+      <texture name="emission" type="constant" value="2.53e+03,2.53e+03,2.53e+03"/>
+    </emission>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="constant" value="0.0296,0.122,0.8"/>
+      <texture name="roughness" type="constant" value="0.5"/>
+      <texture name="metallic" type="constant" value="0.1"/>
+      <texture name="specular" type="constant" value="0.9"/>
+    </bsdf>
+    <shape type="mesh" filename="meshes/Cube.002.ply"/>
+    <transform>
+      <matrix value="1,0,0,3,  0,1,0,3,  0,0,1,0,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="constant" value="0.0985,0.0712,0.0712"/>
+      <texture name="roughness" type="constant" value="0.883"/>
+      <texture name="metallic" type="constant" value="0.842"/>
+      <texture name="specular" type="constant" value="0.775"/>
+    </bsdf>
+    <shape type="mesh" filename="meshes/Plane.ply"/>
+    <transform>
+      <matrix value="20,0,0,0,  0,20,0,0,  0,0,1,-1.2,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="constant" value="0.0414,0.8,0.0758"/>
+      <texture name="roughness" type="constant" value="0.1"/>
+      <texture name="metallic" type="constant" value="0.6"/>
+      <texture name="specular" type="constant" value="0.325"/>
+    </bsdf>
+    <shape type="mesh" filename="meshes/Sphere.ply"/>
+    <transform>
+      <matrix value="0.6,0,0,0,  0,0.6,0,3,  0,0,0.6,1,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <shape type="sphere"/>
+    <transform>
+      <scale value="1e-06"/>
+      <translate x="-2" y="0" z="5"/>
+    </transform>
+    <emission type="lambertian">
+      <texture name="emission" type="constant" value="2.53e+13,2.53e+13,2.53e+13"/>
+    </emission>
+  </instance>
+  <light type="envmap">
+    <texture type="constant" value="0.0509,0.0509,0.0509"/>
+    <transform>
+      <matrix value="1,0,0,0,  0,0,1,0,  0,-1,0,0,  0,0,0,1"/>
+    </transform>
+  </light>
+</scene>
+<integrator type="pathtracer" depth="64" nee="true" mis="true">
+  <ref id="scene"/>
+  <image id="noisy"/>
+  <sampler type="independent" count="1024"/>
+</integrator>
